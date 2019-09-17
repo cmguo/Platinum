@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Platinum</id>
+    <version>1.2.0</version>
+    <title>Platinum</title>
+    <authors>plutinosoft</authors>
+    <owners>plutinosoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>UPnP SDK http://plutinosoft.com/platinum</description>
+  </metadata>
+  <files>
+    <file src="Platinum.props" target="build\Platinum.props"/>
+    <file src="Release\Platinum.Managed.dll" target="Platinum\x86"/>
+    <file src="x64\Release\Platinum.Managed.dll" target="Platinum\x64"/>
+  </files>
+</package>
