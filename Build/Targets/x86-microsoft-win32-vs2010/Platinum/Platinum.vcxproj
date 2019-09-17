@@ -120,7 +120,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Neptune\Source\Core;..\..\..\..\Source\Platinum;..\..\..\..\Source\Core;..\..\..\..\Source\Extras;..\..\..\..\Source\Devices\MediaServer;..\..\..\..\Source\Devices\MediaRenderer;..\..\..\..\Source\Devices\MediaConnect;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\ThirdParty\Neptune\Source\Core;..\..\..\..\Source\Platinum;..\..\..\..\Source\Core;..\..\..\..\Source\Extras;..\..\..\..\Source\Devices\MediaServer;..\..\..\..\Source\Devices\MediaRenderer;..\..\..\..\Source\Devices\MediaConnect;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NPT_CONFIG_ENABLE_LOGGING;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -139,7 +139,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\..\..\Neptune\Source\Core;..\..\..\..\Source\Platinum;..\..\..\..\Source\Core;..\..\..\..\Source\Extras;..\..\..\..\Source\Devices\MediaServer;..\..\..\..\Source\Devices\MediaRenderer;..\..\..\..\Source\Devices\MediaConnect;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\ThirdParty\Neptune\Source\Core;..\..\..\..\Source\Platinum;..\..\..\..\Source\Core;..\..\..\..\Source\Extras;..\..\..\..\Source\Devices\MediaServer;..\..\..\..\Source\Devices\MediaRenderer;..\..\..\..\Source\Devices\MediaConnect;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NPT_CONFIG_ENABLE_LOGGING;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>

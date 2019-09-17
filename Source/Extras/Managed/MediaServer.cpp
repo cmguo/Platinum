@@ -46,16 +46,28 @@ Platinum::MediaServer::MediaServer(PLT_MediaServer* server) :
     RegisterEvents();
 }
 
-Platinum::MediaServer::MediaServer(String^ friendlyName) : 
-    DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName))))
+Platinum::MediaServer::MediaServer(String^ friendlyName) :
+	DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName))))
 {
-    RegisterEvents();
+	RegisterEvents();
 }
 
-Platinum::MediaServer::MediaServer(String^ friendlyName, String^ uuid) : 
-    DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName), false, StringConv(uuid))))
+Platinum::MediaServer::MediaServer(String^ friendlyName, UInt16 port) :
+	DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName), false, NULL, port, true)))
 {
-    RegisterEvents();
+	RegisterEvents();
+}
+
+Platinum::MediaServer::MediaServer(String^ friendlyName, String^ uuid) :
+	DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName), false, StringConv(uuid))))
+{
+	RegisterEvents();
+}
+
+Platinum::MediaServer::MediaServer(String^ friendlyName, String^ uuid, UInt16 port) :
+	DeviceHost(*(new PLT_MediaServer(StringConv(friendlyName), false, StringConv(uuid), port, true)))
+{
+	RegisterEvents();
 }
 
 void Platinum::MediaServer::RegisterEvents()

@@ -82,6 +82,19 @@ Int32 Platinum::Action::SetArgumentValue( String^ name, String^ value )
     return (*m_pHandle)->SetArgumentValue(c.marshal_as<const char*>(name), c.marshal_as<const char*>(value));
 }
 
+String^ Platinum::Action::GetArgumentValue( String^ name )
+{
+	if (String::IsNullOrEmpty(name))
+		throw gcnew ArgumentException("null or empty", "name");
+
+	marshal_context c;
+	NPT_String value;
+	int result = (*m_pHandle)->GetArgumentValue(c.marshal_as<const char*>(name), value);
+	if (result != NPT_SUCCESS)
+		return nullptr;
+	return gcnew String(value);
+}
+
 void Platinum::Action::HandleActionResponse( NeptuneException^ error, Action^ action )
 {
     if (action->m_pHandle == m_pHandle)

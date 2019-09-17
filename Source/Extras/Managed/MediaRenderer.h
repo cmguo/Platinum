@@ -55,6 +55,8 @@ public ref class MediaRenderer : public DeviceHost
 public:
 
 	delegate Int32 GetCurrentConnectionInfoDelegate(Action^ action);
+	delegate Int32 PrepareForConnectionDelegate(Action^ action);
+	delegate Int32 ConnectionCompleteDelegate(Action^ action);
 	delegate Int32 NextDelegate(Action^ action);
 	delegate Int32 PauseDelegate(Action^ action);
 	delegate Int32 PlayDelegate(Action^ action);
@@ -82,7 +84,9 @@ private:
 
 public:
 
-    event GetCurrentConnectionInfoDelegate^ GetCurrentConnectionInfo;
+	event GetCurrentConnectionInfoDelegate^ GetCurrentConnectionInfo;
+	event PrepareForConnectionDelegate^ PrepareForConnection;
+	event ConnectionCompleteDelegate^ ConnectionComplete;
 	event NextDelegate^ Next;
 	event PauseDelegate^ Pause;
 	event PlayDelegate^ Play;
@@ -102,6 +106,18 @@ internal:
 	{
 		// handle events
 		return this->GetCurrentConnectionInfo(action);
+	}
+
+	Int32 OnPrepareForConnection(Action^ action)
+	{
+		// handle events
+		return this->PrepareForConnection(action);
+	}
+
+	Int32 OnConnectionComplete(Action^ action)
+	{
+		// handle events
+		return this->ConnectionComplete(action);
 	}
 
 	Int32 OnNext(Action^ action)
@@ -179,8 +195,10 @@ internal:
 public:
 
     MediaRenderer(String^ friendlyName);
-    MediaRenderer(String^ friendlyName, String^ uuid);
-    MediaRenderer(PLT_MediaRenderer* server);
+	MediaRenderer(String^ friendlyName, UInt16 port);
+	MediaRenderer(String^ friendlyName, String^ uuid);
+	MediaRenderer(String^ friendlyName, String^ uuid, UInt16 port);
+	MediaRenderer(PLT_MediaRenderer* server);
     
     ~MediaRenderer()
     {

@@ -95,6 +95,7 @@ public:
 
     ActionArgumentDescription^ GetArgument(String^ name);
     Int32 SetArgumentValue(String^ name, String^ value);
+	String^ GetArgumentValue(String^ name);
 
 internal:
 

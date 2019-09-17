@@ -50,6 +50,8 @@ public:
 
     // ConnectionManager
     virtual NPT_Result OnGetCurrentConnectionInfo(PLT_ActionReference& action) = 0;
+    virtual NPT_Result OnPrepareForConnection(PLT_ActionReference& action) = 0;
+    virtual NPT_Result OnConnectionComplete(PLT_ActionReference& action) = 0;
 
     // AVTransport
     virtual NPT_Result OnNext(PLT_ActionReference& action) = 0;
@@ -93,6 +95,8 @@ protected:
     // PLT_MediaRendererInterface methods
     // ConnectionManager
     virtual NPT_Result OnGetCurrentConnectionInfo(PLT_ActionReference& action);
+    virtual NPT_Result OnPrepareForConnection(PLT_ActionReference& action);
+    virtual NPT_Result OnConnectionComplete(PLT_ActionReference& action);
 
     // AVTransport
     virtual NPT_Result OnNext(PLT_ActionReference& action);

@@ -45,6 +45,16 @@ NPT_Result Platinum::MediaRendererEventBridge::OnGetCurrentConnectionInfo(PLT_Ac
 	return m_pMediaRenderer->OnGetCurrentConnectionInfo(marshal_as<Action^>(action));
 }
 
+NPT_Result Platinum::MediaRendererEventBridge::OnPrepareForConnection(PLT_ActionReference& action)
+{
+	return m_pMediaRenderer->OnPrepareForConnection(marshal_as<Action^>(action));
+}
+
+NPT_Result Platinum::MediaRendererEventBridge::OnConnectionComplete(PLT_ActionReference& action)
+{
+	return m_pMediaRenderer->OnConnectionComplete(marshal_as<Action^>(action));
+}
+
 // AVTransport
 NPT_Result Platinum::MediaRendererEventBridge::OnNext(PLT_ActionReference& action)
 {

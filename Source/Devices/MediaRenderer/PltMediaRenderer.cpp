@@ -232,15 +232,23 @@ PLT_MediaRenderer::OnAction(PLT_ActionReference&          action,
     }
 
     /* Is it a ConnectionManager Service Action ? */
-    if (name.Compare("GetCurrentConnectionInfo", true) == 0) {
-        return OnGetCurrentConnectionInfo(action);
-    }
+	if (name.Compare("GetCurrentConnectionInfo", true) == 0) {
+		return OnGetCurrentConnectionInfo(action);
+	}
 
-    /* Is it a AVTransport Service Action ? */
-    if (name.Compare("Next", true) == 0) {
-        return OnNext(action);
-    }
-    if (name.Compare("Pause", true) == 0) {
+	if (name.Compare("PrepareForConnection", true) == 0) {
+		return OnPrepareForConnection(action);
+	}
+
+	if (name.Compare("ConnectionComplete", true) == 0) {
+		return OnConnectionComplete(action);
+	}
+
+	/* Is it a AVTransport Service Action ? */
+	if (name.Compare("Next", true) == 0) {
+		return OnNext(action);
+	}
+	if (name.Compare("Pause", true) == 0) {
         return OnPause(action);
     }
     if (name.Compare("Play", true) == 0) {
@@ -323,6 +331,39 @@ PLT_MediaRenderer::OnGetCurrentConnectionInfo(PLT_ActionReference& action)
     }
 
     return NPT_SUCCESS;
+}
+
+/*----------------------------------------------------------------------
+|   PLT_MediaRenderer::OnPrepareForConnection
++---------------------------------------------------------------------*/
+NPT_Result
+PLT_MediaRenderer::OnPrepareForConnection(PLT_ActionReference& action)
+{
+    if (m_Delegate) {
+        return m_Delegate->OnPrepareForConnection(action);
+    }
+	if (NPT_FAILED(action->SetArgumentValue("ConnectionID", "-1"))) {
+		return NPT_FAILURE;
+	}
+	if (NPT_FAILED(action->SetArgumentValue("AVTransportID", "-1"))) {
+		return NPT_FAILURE;
+	}
+	if (NPT_FAILED(action->SetArgumentValue("RcsID", "-1"))) {
+		return NPT_FAILURE;
+	}
+	return NPT_ERROR_NOT_IMPLEMENTED;
+}
+
+/*----------------------------------------------------------------------
+|   PLT_MediaRenderer::OnConnectionComplete
++---------------------------------------------------------------------*/
+NPT_Result
+PLT_MediaRenderer::OnConnectionComplete(PLT_ActionReference& action)
+{
+    if (m_Delegate) {
+        return m_Delegate->OnConnectionComplete(action);
+    }
+	return NPT_ERROR_NOT_IMPLEMENTED;
 }
 
 /*----------------------------------------------------------------------

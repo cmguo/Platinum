@@ -107,8 +107,10 @@ internal:
 public:
 
     MediaServer(String^ friendlyName);
-    MediaServer(String^ friendlyName, String^ uuid);
-    MediaServer(PLT_MediaServer* server);
+	MediaServer(String^ friendlyName, UInt16 port);
+	MediaServer(String^ friendlyName, String^ uuid);
+	MediaServer(String^ friendlyName, String^ uuid, UInt16 port);
+	MediaServer(PLT_MediaServer* server);
     
     void UpdateSystemUpdateID(Int32 update);
     void UpdateContainerUpdateID(String^ id, Int32 update);

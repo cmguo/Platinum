@@ -46,14 +46,26 @@ Platinum::MediaRenderer::MediaRenderer(PLT_MediaRenderer* server) :
     RegisterEvents();
 }
 
-Platinum::MediaRenderer::MediaRenderer(String^ friendlyName) : 
-    DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName))))
+Platinum::MediaRenderer::MediaRenderer(String^ friendlyName) :
+	DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName))))
+{
+	RegisterEvents();
+}
+
+Platinum::MediaRenderer::MediaRenderer(String^ friendlyName, UInt16 port) :
+	DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName), false, NULL, port, true)))
+{
+	RegisterEvents();
+}
+
+Platinum::MediaRenderer::MediaRenderer(String^ friendlyName, String^ uuid) :
+    DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName), false, StringConv(uuid))))
 {
     RegisterEvents();
 }
 
-Platinum::MediaRenderer::MediaRenderer(String^ friendlyName, String^ uuid) : 
-    DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName), false, StringConv(uuid))))
+Platinum::MediaRenderer::MediaRenderer(String^ friendlyName, String^ uuid, UInt16 port) :
+    DeviceHost(*(new PLT_MediaRenderer(StringConv(friendlyName), false, StringConv(uuid), port, true)))
 {
     RegisterEvents();
 }
