@@ -186,11 +186,13 @@ namespace clix {
   /// </remarks>
   /// <param name="string">String to be marshalled to the other side</param>
   /// <returns>The marshaled representation of the string</returns>
-  template<Encoding encoding, typename SourceType>
-  typename detail::Select<detail::IsManagedString<SourceType>::Result>::Type<
+  template<Encoding encoding, typename SourceType, 
+	  bool b=detail::IsManagedString<SourceType>::Result>
+  typename detail::Select<true>::Type<
     typename detail::StringTypeSelecter<encoding>::Type,
     System::String ^
-  >::Result marshalString(SourceType string) {
+  >::Result marshalString(SourceType string)
+  {	
    
     // Pass on the call to our nifty template routines
     return detail::StringMarshaler<

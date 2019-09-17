@@ -247,8 +247,9 @@ private:
     {
         switch (signature) 
         {
-        case PLT_DEVICE_XBOX:
-            return DeviceSignature::XBox;
+		case PLT_DEVICE_XBOX_ONE:
+		case PLT_DEVICE_XBOX_360:
+			return DeviceSignature::XBox;
         case PLT_DEVICE_PS3:
             return DeviceSignature::PS3;
         case PLT_DEVICE_WMP:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
+using Action = Platinum.Action;
 
 namespace Platinum.Managed.MediaServerTest
 {
@@ -8,7 +9,7 @@ namespace Platinum.Managed.MediaServerTest
     {
         static void Main(string[] args)
         {
-            new Program().Run();
+            new Program2().Run();
         }
 
         private void Run()
